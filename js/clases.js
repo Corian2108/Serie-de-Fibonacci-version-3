@@ -2,12 +2,11 @@
 //Tema: Tabla de Fibonacci
 
 class Solver {
-    constructor(p, s, m, mult) {
+    constructor(p, s, m) {
         //Atributos
         this.primero = p;
         this.segundo = s;
         this.maximo = m;
-        this.multiploABuscar = mult;
 
         //Almacen
         this.serie = [];
@@ -31,35 +30,31 @@ var contadorColumna = 0;
 function generar() {
     this.serie.push(this.primero);
     this.serie.push(this.segundo);
-    console.log(this.serie);
     calcularSerie(this.serie, this.maximo);
+    console.log(this.serie);
 }
 
-function calcularSerie(serie, contenedor) {
+function calcularSerie(serie, maximo) {
 
-    if (serie[serie.length - 2] + serie[serie.length - 1] < contenedor) {
+    if (serie[serie.length - 2] + serie[serie.length - 1] < maximo) {
         nuevo = serie[serie.length - 2] + serie[serie.length - 1]
         serie.push(nuevo);
-        console.log(nuevo);
-        return calcularSerie(serie, contenedor);
+        return calcularSerie(serie, maximo);
     }
 }
 
 //mostrar
-function mostrar(contenedor) {
+function mostrar(array) {
     tr = document.createElement('tr');
     tablaDeDatos.appendChild(tr)
-    contador(0, contenedor);
+    contador(0, array);
 }
 
 function contador(inicio, contenedor) {
-    console.log(contenedor);
-    x = contenedor.length
-    console.log(x);
-    if (inicio < x) {
-        insertarColumna(inicio, contenedor);
-        return contador(++inicio)
 
+    if (inicio < contenedor.length) {
+        insertarColumna(inicio, contenedor);
+        return contador(++inicio, contenedor)
     }
 }
 
@@ -80,7 +75,7 @@ function contarColumna() {
 }
 
 //calcular multiplo
-function calculaMultiplo(serie, opcion, ) {
+function calculaMultiplo(serie, opcion) {
     //identifica qué calcular
     if (opcion === "a") {//identifica pares
         serie.forEach(esMultiplo(elemento, 2, 0))
@@ -102,7 +97,7 @@ function esMultiplo(numero, divisor, resultado) {
 //buscar en el array
 function buscar(numero) {
     num = parseInt(numero);
-    
+
     //consigue los elementos de la tabla
     elementosTabal = document.getElementsByTagName("table")[0];
     misCeldas = elementosTabal.getElementsByTagName("td");
