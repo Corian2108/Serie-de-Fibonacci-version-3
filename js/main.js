@@ -32,9 +32,12 @@ document.getElementById("generar")
 //calcula los pares
 document.getElementById("pares")
     .addEventListener("click", function () {
-        //vacian la tabla
-        document.getElementById("tablaDeDatos")
-            .innerHtml = "";
+        //vaciar la tabla
+        var tabla = document.getElementById("tablaDeDatos");
+        var filas = tabla.getElementByTagname("tr");
+        var inicio = filas.length - 1;
+        
+        fibonacci.borrarTabla(inicio);
 
         //vacia el array de multiplos
         fibonacci.multiplos = [];
@@ -50,10 +53,13 @@ document.getElementById("pares")
 //calcula los impares
 document.getElementById("impares")
     .addEventListener("click", function () {
-        //vacian la tabla
-        document.getElementById("tablaDeDatos")
-            .innerHtml = "";
-
+        //vaciar la tabla
+        var tabla = document.getElementById("tablaDeDatos");
+        var filas = tabla.getElementByTagname("tr");
+        var inicio = filas.length - 1;
+        
+        fibonacci.borrarTabla(inicio);
+        
         //vacia el array de multiplos
         fibonacci.multiplos = [];
 
@@ -68,10 +74,10 @@ document.getElementById("impares")
 //busca el número que ingresas
 document.getElementById("buscar")
     .addEventListener("click", function () {
-       //consigue los datos
-       var numero = document.getElementById("numero");
+        //consigue los datos
+        var numero = document.getElementById("numero");
 
-       //busca en el array
-       fibonacci.buscar(numero);
+        //busca en el array
+        fibonacci.buscar(numero);
 
     });
